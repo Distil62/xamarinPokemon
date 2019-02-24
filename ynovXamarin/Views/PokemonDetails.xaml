@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ynovXamarin.PokemonDetails">
+    <StackLayout x:Name="detailLayout" Margin="38">
+        <FlexLayout Direction="Row" AlignItems="Center">
+            <Image Source="{Binding Sprites.FrontDefault}" Scale="2"/>
+            <StackLayout>
+                <FlexLayout Direction="Row" AlignContent="Start">
+                    <Label Text="Poids : " FontSize="Medium"/>
+                    <Label Text="{Binding Weight}"/>
+                    <Label Text=" Kg" />
+                </FlexLayout>
+                <FlexLayout Direction="Row" AlignContent="Start">
+                    <Label Text="Hauteur :" FontSize="Medium"/>
+                    <Label Text="{Binding Height}" />
+                    <Label Text=" ft" />
+                </FlexLayout>
+            </StackLayout>
+        </FlexLayout>
+        <FlexLayout Direction="Row" AlignContent="Center">
+            <StackLayout>
+                <Label Text="Statistiques de base :" FontSize="Large" />
+                <FlexLayout Direction="Row" AlignContent="Start">
+                    <Label Text="Vitesse : " FontAttributes="Bold"/>
+                    <Label Text="{Binding Stats[0].BaseStat}"/>
+                </FlexLayout>
+                <FlexLayout Direction="Row" AlignContent="Start">
+                    <Label Text="Défense spéciale : " FontAttributes="Bold"/>
+                    <Label Text="{Binding Stats[1].BaseStat}"/>
+                </FlexLayout>
+                <FlexLayout Direction="Row" AlignContent="Start">
+                    <Label Text="Attaque spéciale : " FontAttributes="Bold"/>
+                    <Label Text="{Binding Stats[2].BaseStat}"/>
+                </FlexLayout>
+                <FlexLayout Direction="Row" AlignContent="Start">
+                    <Label Text="Défense : " FontAttributes="Bold"/>
+                    <Label Text="{Binding Stats[3].BaseStat}"/>
+                </FlexLayout>
+                <FlexLayout Direction="Row" AlignContent="Start">
+                    <Label Text="Attaque : " FontAttributes="Bold"/>
+                    <Label Text="{Binding Stats[4].BaseStat}"/>
+                </FlexLayout>
+                <FlexLayout Direction="Row" AlignContent="Start">
+                    <Label Text="Point de vie : " FontAttributes="Bold"/>
+                    <Label Text="{Binding Stats[5].BaseStat}"/>
+                </FlexLayout>
+            </StackLayout>
+            <ScrollView x:Name="mooveView">
+                <ListView ItemsSource="{Binding Moves}">
+                    <ListView.Header>
+                        <Label Text="Capacités : " FontSize="Large" />
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding MoveMove.Name}" TextColor="DarkBlue"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+        </FlexLayout>
+        
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ynovXamarin.MainPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+"
+                     Activated="AddPage"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Title>
+        POKéDEX
+    </ContentPage.Title>
+    <StackLayout>
+        <Entry x:Name="search" Placeholder="Entrez le nom d'un pokémon" PropertyChanged="HandleSearch"/> 
+        <ListView x:Name="PokemonListView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Tapped="GoDetails">
+                        <ViewCell.View>
+                            <FlexLayout Direction="Row" AlignContent="Center" AlignItems="Center">
+                                <Image Source="{Binding Sprites.FrontDefault}" />
+                                <Label HorizontalTextAlignment="Center" Text="No" FontSize="Small"/>
+                                <Label Text="{Binding Id}" FontSize="Medium" />
+                                <Label Text="{Binding Forms[0].Name}"  FontAttributes="Bold" FontSize="Large"/>
+                            </FlexLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>
