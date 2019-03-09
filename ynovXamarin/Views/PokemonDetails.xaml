@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ynovXamarin.PokemonDetails">
     <StackLayout x:Name="detailLayout" Margin="38">
-        <FlexLayout Direction="Row" AlignItems="Center">
+        <FlexLayout Direction="Column" AlignItems="Center">
             <Image Source="{Binding Sprites.FrontDefault}" Scale="2"/>
-            <StackLayout>
+            <FlexLayout Direction="Row" AlignItems="Center">
                 <FlexLayout Direction="Row" AlignContent="Start">
                     <Label Text="Poids : " FontSize="Medium"/>
                     <Label Text="{Binding Weight}"/>
@@ -16,7 +16,7 @@
                     <Label Text="{Binding Height}" />
                     <Label Text=" ft" />
                 </FlexLayout>
-            </StackLayout>
+            </FlexLayout>
         </FlexLayout>
         <FlexLayout Direction="Row" AlignContent="Center">
             <StackLayout>

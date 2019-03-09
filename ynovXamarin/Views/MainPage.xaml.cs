@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using ynovXamarin.ViewModel;
 using ynovXamarin.Model;
+using Newtonsoft.Json;
 
 namespace ynovXamarin
 {
@@ -26,7 +24,15 @@ namespace ynovXamarin
 
         protected override void OnAppearing()
         {
-            allPokemons = PokemonViewModel.GetMultiplePokemon();
+            // allPokemons = PokemonViewModel.GetMultiplePokemon();
+
+            Pokemon current;
+
+            for (int i = 0; i <= 10; i++)
+            {
+                current = JsonConvert.DeserializeObject<Pokemon>(PokemonViewModel.AsyncGetPokemon(i).Result);
+                allPokemons.Add(current);
+            }
 
             PokemonListView.ItemsSource = allPokemons;
 

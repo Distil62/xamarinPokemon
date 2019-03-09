@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 using ynovXamarin.Model;
+using System.Net.Http;
 
 namespace ynovXamarin.ViewModel
 {
@@ -33,13 +34,38 @@ namespace ynovXamarin.ViewModel
             return newPokemon;
         }
 
-        public static List<Pokemon> GetMultiplePokemon(int start = 1, int end = 151)
+        public static List<Pokemon> GetMultiplePokemon(int start = 1, int end = 1)
         {
             List<Pokemon> pokemons = new List<Pokemon>();
 
             for (int i = start; i <= end; i++)
             {
-                pokemons.Add(GetPokemon(i));
+               pokemons.Add(GetPokemon(i));
+            }
+
+            return pokemons;
+        }
+
+        public static async Task<string> AsyncGetPokemon(int pokemonId)
+        {
+            string reqUrl = url + pokemonId.ToString();
+            var httpClient = new HttpClient();
+
+            var response = await httpClient.GetAsync(reqUrl);
+
+            return await response.Content.ReadAsStringAsync();
+
+        }
+
+        public static List<Pokemon> AsyncGetMultiplePokemon(int start = 1, int end = 1)
+        {
+            List<Pokemon> pokemons = new List<Pokemon>();
+            Pokemon current;
+
+            for (int i = start; i <= end; i++)
+            {
+                current = JsonConvert.DeserializeObject<Pokemon>(AsyncGetPokemon(i).Result);
+                pokemons.Add(current);
             }
 
             return pokemons;
