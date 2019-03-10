@@ -4,7 +4,7 @@
              x:Class="ynovXamarin.PokemonDetails">
     <StackLayout x:Name="detailLayout" Margin="38">
         <FlexLayout Direction="Column" AlignItems="Center" JustifyContent="SpaceEvenly">
-            <Image Source="{Binding Sprites.FrontDefault}" Scale="1"/>
+            <Image Source="{Binding Sprites.FrontDefault}" Scale="3" Margin="0, 38, 0, 38" />
             <FlexLayout Direction="Row" AlignItems="Center">
                 <FlexLayout Direction="Row" AlignContent="Start" JustifyContent="SpaceAround">
                     <Label Text="Poids : " FontSize="Medium"/>
