@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.IO;
 
-using System.Globalization;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 using ynovXamarin.Model;
-using System.Net.Http;
+using System.Threading.Tasks;
+using System;
 
 namespace ynovXamarin.ViewModel
 {
@@ -34,7 +30,7 @@ namespace ynovXamarin.ViewModel
             return newPokemon;
         }
 
-        public static List<Pokemon> GetMultiplePokemon(int start = 1, int end = 1)
+        public static List<Pokemon> GetMultiplePokemon(int start, int end)
         {
             List<Pokemon> pokemons = new List<Pokemon>();
 
@@ -46,29 +42,30 @@ namespace ynovXamarin.ViewModel
             return pokemons;
         }
 
-        public static async Task<string> AsyncGetPokemon(int pokemonId)
+        public static async Task<string> GetPokemonAsStringAsync(int pokemonId)
         {
-            string reqUrl = url + pokemonId.ToString();
-            var httpClient = new HttpClient();
+            var uri = new Uri(url + pokemonId.ToString());
+            var webClient = new WebClient();
+            var result  = await webClient.DownloadStringTaskAsync(uri);
 
-            var response = await httpClient.GetAsync(reqUrl);
-
-            return await response.Content.ReadAsStringAsync();
-
+            return result;
         }
 
-        public static List<Pokemon> AsyncGetMultiplePokemon(int start = 1, int end = 1)
+        public static async Task<List<Pokemon>> GetMultiplePokemonAsync(int start, int end)
         {
             List<Pokemon> pokemons = new List<Pokemon>();
-            Pokemon current;
+            string pokemonStrTask;
+            Pokemon currentPkm;
 
             for (int i = start; i <= end; i++)
             {
-                current = JsonConvert.DeserializeObject<Pokemon>(AsyncGetPokemon(i).Result);
-                pokemons.Add(current);
+                pokemonStrTask = await GetPokemonAsStringAsync(i);
+                currentPkm = JsonConvert.DeserializeObject<Pokemon>(pokemonStrTask);
+                pokemons.Add(currentPkm);
             }
 
             return pokemons;
         }
+
     }
 }
