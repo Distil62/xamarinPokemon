@@ -4,21 +4,32 @@
              x:Class="ynovXamarin.MainPage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="+"
-                     Activated="AddPage"/>
+        <ToolbarItem Text="Kanto"
+                     Activated="GetKanto"/>
+        <ToolbarItem Text="Jhoto"
+                     Activated="GetJhoto"/>
+        <ToolbarItem Text="Hoenn"
+                     Activated="GetHoenn"/>
+        <ToolbarItem Text="Sinnoh"
+                     Activated="GetSinnoh"/>
+        <ToolbarItem Text="Kalos"
+                     Activated="GetKalos"/>
+        <ToolbarItem Text="Alola"
+                     Activated="GetAlola"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Title>
-        POKéDEX
+        POKéDEX 
     </ContentPage.Title>
     <StackLayout>
-        <Entry x:Name="search" Placeholder="Entrez le nom d'un pokémon" PropertyChanged="HandleSearch"/> 
+        <Entry x:Name="search" Placeholder="Entrez le nom d'un pokémon" PropertyChanged="HandleSearch"/>
+        <Image x:Name="loadingGif" Source="https://assets.materialup.com/uploads/c0d64fb8-82bf-458c-bfc8-2396e51b14f2/loader-meta.gif" />
         <ListView x:Name="PokemonListView">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell Tapped="GoDetails">
                         <ViewCell.View>
                             <FlexLayout Direction="Row" AlignContent="Center" AlignItems="Center">
-                                <Image Source="{Binding Sprites.FrontDefault}" />
+                                <Image Source="{Binding Sprites.FrontDefault}"  />
                                 <Label HorizontalTextAlignment="Center" Text="No" FontSize="Small"/>
                                 <Label Text="{Binding Id}" FontSize="Medium" />
                                 <Label Text="{Binding Forms[0].Name}"  FontAttributes="Bold" FontSize="Large"/>

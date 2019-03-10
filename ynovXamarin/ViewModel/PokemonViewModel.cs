@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.IO;
 
-using System.Globalization;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 using ynovXamarin.Model;
+using System.Threading.Tasks;
+using System;
 
 namespace ynovXamarin.ViewModel
 {
@@ -33,16 +30,42 @@ namespace ynovXamarin.ViewModel
             return newPokemon;
         }
 
-        public static List<Pokemon> GetMultiplePokemon(int start = 1, int end = 151)
+        public static List<Pokemon> GetMultiplePokemon(int start, int end)
         {
             List<Pokemon> pokemons = new List<Pokemon>();
 
             for (int i = start; i <= end; i++)
             {
-                pokemons.Add(GetPokemon(i));
+               pokemons.Add(GetPokemon(i));
             }
 
             return pokemons;
         }
+
+        public static async Task<string> GetPokemonAsStringAsync(int pokemonId)
+        {
+            var uri = new Uri(url + pokemonId.ToString());
+            var webClient = new WebClient();
+            var result  = await webClient.DownloadStringTaskAsync(uri);
+
+            return result;
+        }
+
+        public static async Task<List<Pokemon>> GetMultiplePokemonAsync(int start, int end)
+        {
+            List<Pokemon> pokemons = new List<Pokemon>();
+            string pokemonStrTask;
+            Pokemon currentPkm;
+
+            for (int i = start; i <= end; i++)
+            {
+                pokemonStrTask = await GetPokemonAsStringAsync(i);
+                currentPkm = JsonConvert.DeserializeObject<Pokemon>(pokemonStrTask);
+                pokemons.Add(currentPkm);
+            }
+
+            return pokemons;
+        }
+
     }
 }
