@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ynovXamarin.Android", "ynovXamarin\ynovXamarin.Android\ynovXamarin.Android.csproj", "{9AF26A8C-10B3-4322-9DF6-5530E5DA0793}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ynovXamarin.Android", "ynovXamarin.Android\ynovXamarin.Android.csproj", "{9AF26A8C-10B3-4322-9DF6-5530E5DA0793}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ynovXamarin.iOS", "ynovXamarin\ynovXamarin.iOS\ynovXamarin.iOS.csproj", "{942F7985-4E3F-4F9E-A435-5ADB63C9B6BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ynovXamarin.iOS", "ynovXamarin.iOS\ynovXamarin.iOS.csproj", "{942F7985-4E3F-4F9E-A435-5ADB63C9B6BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ynovXamarin.UWP", "ynovXamarin\ynovXamarin.UWP\ynovXamarin.UWP.csproj", "{DA359900-5EA1-4C46-B744-0AD425F549F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ynovXamarin.UWP", "ynovXamarin.UWP\ynovXamarin.UWP.csproj", "{DA359900-5EA1-4C46-B744-0AD425F549F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ynovXamarin", "ynovXamarin\ynovXamarin\ynovXamarin.csproj", "{564DAFB7-DAF5-4A72-A5AD-D155CDFC6E23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ynovXamarin", "ynovXamarin\ynovXamarin.csproj", "{564DAFB7-DAF5-4A72-A5AD-D155CDFC6E23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
